@@ -14,7 +14,13 @@ namespace AspNetCoreWebApi.Controllers
             var function = new TblApartamentosDatos();
             var lista = await function.MostrarApartamentos();
             return lista;
+        }
 
+        [HttpPost]
+        public async Task PostApartamento([FromBody] TblApartamentosModelo parametros)
+        {
+            var function = new TblApartamentosDatos();
+            await function.InsertarApartamentos(parametros);
         }
     }
 }
