@@ -42,5 +42,29 @@ namespace AspNetCoreWebApi.Datos
                 return lista;
             }
         }
+
+        public async Task InsertarApartamentos(TblApartamentosModelo parametros)
+        {
+            using (var sql = new SqlConnection(cn.CadenaSQL()))
+            {
+                using (var cmd = new SqlCommand("InsertarApartamento", sql))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Codigo",parametros.Codigo);
+                    cmd.Parameters.AddWithValue("@Urls",parametros.Urls);
+                    cmd.Parameters.AddWithValue("@Area",parametros.Area);
+                    cmd.Parameters.AddWithValue("@Habitaciones",parametros.Habitaciones);
+                    cmd.Parameters.AddWithValue("@Garaje",parametros.Garaje);
+                    cmd.Parameters.AddWithValue("@Ducha",parametros.Ducha);
+                    cmd.Parameters.AddWithValue("@Municipio",parametros.Municipio);
+                    cmd.Parameters.AddWithValue("@Barrio",parametros.Barrio);
+                    cmd.Parameters.AddWithValue("@Precio",parametros.Precio);
+                    cmd.Parameters.AddWithValue("@Agencia",parametros.Agencia);
+                    await sql.OpenAsync();
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
     }
 }
