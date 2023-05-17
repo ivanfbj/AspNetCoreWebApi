@@ -72,7 +72,7 @@ namespace AspNetCoreWebApi.Datos
                 using (var cmd = new SqlCommand("ActualizarApartamento", sql))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Id", parametros.Codigo);
+                    cmd.Parameters.AddWithValue("@Id", parametros.Id);
                     //cmd.Parameters.AddWithValue("@Codigo", parametros.Codigo);
                     //cmd.Parameters.AddWithValue("@Urls", parametros.Urls);
                     //cmd.Parameters.AddWithValue("@Area", parametros.Area);

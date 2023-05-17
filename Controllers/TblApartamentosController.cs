@@ -6,10 +6,10 @@ namespace AspNetCoreWebApi.Controllers
 {
     [ApiController]
     [Route("api/apartamentos")]
-    public class TblApartamentosController
+    public class TblApartamentosController : ControllerBase
     {
         [HttpGet]
-        public async Task <ActionResult<List<TblApartamentosModelo>>> GetApartamentos()
+        public async Task<ActionResult<List<TblApartamentosModelo>>> GetApartamentos()
         {
             var function = new TblApartamentosDatos();
             var lista = await function.MostrarApartamentos();
@@ -21,6 +21,14 @@ namespace AspNetCoreWebApi.Controllers
         {
             var function = new TblApartamentosDatos();
             await function.InsertarApartamentos(parametros);
+        }
+        [HttpPut("{Id}")]
+        public async Task<ActionResult> PutApartamento(int Id, [FromBody] TblApartamentosModelo parametros)
+        {
+            var function = new TblApartamentosDatos();
+            parametros.Id = Id;
+            await function.ActualizarApartamentos(parametros);
+            return NoContent();
         }
     }
 }
