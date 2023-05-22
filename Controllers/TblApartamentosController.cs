@@ -30,5 +30,14 @@ namespace AspNetCoreWebApi.Controllers
             await function.ActualizarApartamentos(parametros);
             return NoContent();
         }
+        [HttpDelete("{Id}")]
+        public async Task<ActionResult> DeleteApartamento(int Id)
+        {
+            var function = new TblApartamentosDatos();
+            var parametros = new TblApartamentosModelo();
+            parametros.Id = Id;
+            await function.EliminarApartamento(parametros);
+            return NoContent();
+        }
     }
 }

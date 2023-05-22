@@ -89,5 +89,19 @@ namespace AspNetCoreWebApi.Datos
             }
         }
 
+        public async Task EliminarApartamento(TblApartamentosModelo parametros)
+        {
+            using (var sql = new SqlConnection(cn.CadenaSQL()))
+            {
+                using (var cmd = new SqlCommand("EliminarApartamento", sql))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", parametros.Id);
+                    await sql.OpenAsync();
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
     }
 }
