@@ -68,12 +68,31 @@ GO
 -- Description:	Procedimiento que se utiliza en la API REST para actualizar información.
 -- =============================================
 CREATE OR ALTER PROCEDURE stpr_ActualizarApartamento
-	@Id		INT,
-	@Precio	BIGINT
+	@Id				INT,
+	@Codigo			VARCHAR(255) = NULL,
+	@Urls			VARCHAR(1000) = NULL,
+	@Area			VARCHAR(15) = NULL,
+	@Habitaciones	INT = NULL,
+	@Garaje			INT = NULL,
+	@Ducha			INT = NULL,
+	@Municipio		VARCHAR(255) = NULL,
+	@Barrio			VARCHAR(255) = NULL,
+	@Precio			BIGINT = NULL,
+	@Agencia		VARCHAR(255) = NULL
 AS
 BEGIN
 	UPDATE TblApartamentos
-		SET Precio = @Precio
+	SET 
+		Codigo = COALESCE(@Codigo, Codigo),
+		Urls = COALESCE(@Urls, Urls),
+		Area = COALESCE(@Area, Area),
+		Habitaciones = COALESCE(@Habitaciones, Habitaciones),
+		Garaje = COALESCE(@Garaje, Garaje),
+		Ducha = COALESCE(@Ducha, Ducha),
+		Municipio = COALESCE(@Municipio, Municipio),
+		Barrio = COALESCE(@Barrio, Barrio),
+		Precio = COALESCE(@Precio, Precio),
+		Agencia = COALESCE(@Agencia, Agencia)
 	WHERE Id = @Id
 END
 GO
