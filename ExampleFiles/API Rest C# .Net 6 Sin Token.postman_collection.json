@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "d6f0558b-5a3c-4e8e-af37-4e92668631e0",
+		"name": "API Rest C# .Net 6 Sin Token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22977901"
+	},
+	"item": [
+		{
+			"name": "Get Apartamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:7158/api/apartamentos"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Apartamento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\r\n\t\t\"Codigo\": \"11238\",\r\n\t\t\"Urls\": \"https://www.abacoarrendamientos.com/inmueble/11238/Arriendo/\",\r\n\t\t\"Area\": \"40m2\",\r\n\t\t\"Habitaciones\": 1,\r\n\t\t\"Garaje\": 0,\r\n\t\t\"Ducha\": 1,\r\n\t\t\"Municipio\": \"Envigado\",\r\n\t\t\"Barrio\": \"Alcala\",\r\n\t\t\"Precio\": 1200000,\r\n\t\t\"Agencia\": \"Abaco Arrendamientos\"\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7158/api/apartamentos"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Apartamento",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Codigo\": \"N/A\",\r\n    \"Urls\": \"N/A\",\r\n    \"Area\": \"N/A\",\r\n    \"Habitaciones\": 0,\r\n    \"Garaje\": 0,\r\n    \"Ducha\": 0,\r\n    \"Municipio\": \"N/A\",\r\n    \"Barrio\": \"N/A\",\r\n    \"Precio\": 1478,\r\n    \"Agencia\": \"N/A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:7158/api/apartamentos/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Del Apartamento",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://localhost:7158/api/apartamentos/1008"
+			},
+			"response": []
+		}
+	]
+}
