@@ -36,7 +36,7 @@ GO
 -- Create date: 20230513
 -- Description:	Procedimiento que se utiliza en la API REST para insertar información.
 -- =============================================
-CREATE OR ALTER PROCEDURE InsertarApartamento
+CREATE OR ALTER PROCEDURE stpr_InsertarApartamento
     @Codigo			VARCHAR(255),
     @Urls			VARCHAR(1000),
     @Area			VARCHAR(15),
@@ -67,7 +67,7 @@ GO
 -- Create date: 20230513
 -- Description:	Procedimiento que se utiliza en la API REST para actualizar información.
 -- =============================================
-CREATE OR ALTER PROCEDURE ActualizarApartamento
+CREATE OR ALTER PROCEDURE stpr_ActualizarApartamento
 	@Id		INT,
 	@Precio	BIGINT
 AS
@@ -82,7 +82,7 @@ GO
 -- Create date: 20230513
 -- Description:	Procedimiento que se utiliza en la API REST para consultar información.
 -- =============================================
-CREATE OR ALTER PROCEDURE MostrarApartamentos
+CREATE OR ALTER PROCEDURE stpr_MostrarApartamentos
 AS
 BEGIN
 	SELECT Id, Codigo, Urls, Area, Habitaciones, Garaje, Ducha, Municipio, Barrio, Precio, Agencia
@@ -94,7 +94,7 @@ GO
 -- Create date: 20230513
 -- Description:	Procedimiento que se utiliza en la API REST para Eliminar información.
 -- =============================================
-CREATE OR ALTER PROCEDURE EliminarApartamento
+CREATE OR ALTER PROCEDURE stpr_EliminarApartamento
 	@Id		INT
 AS
 BEGIN

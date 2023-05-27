@@ -14,7 +14,7 @@ namespace AspNetCoreWebApi.Datos
             var lista = new List<TblApartamentosModelo>();
             using (var sql = new SqlConnection(cn.CadenaSQL()))
             {
-                using (var cmd = new SqlCommand("MostrarApartamentos", sql))
+                using (var cmd = new SqlCommand("stpr_MostrarApartamentos", sql))
                 {
                     await sql.OpenAsync();
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -42,12 +42,11 @@ namespace AspNetCoreWebApi.Datos
                 return lista;
             }
         }
-
         public async Task InsertarApartamentos(TblApartamentosModelo parametros)
         {
             using (var sql = new SqlConnection(cn.CadenaSQL()))
             {
-                using (var cmd = new SqlCommand("InsertarApartamento", sql))
+                using (var cmd = new SqlCommand("stpr_InsertarApartamento", sql))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Codigo",parametros.Codigo);
@@ -69,7 +68,7 @@ namespace AspNetCoreWebApi.Datos
         {
             using (var sql = new SqlConnection(cn.CadenaSQL()))
             {
-                using (var cmd = new SqlCommand("ActualizarApartamento", sql))
+                using (var cmd = new SqlCommand("stpr_ActualizarApartamento", sql))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", parametros.Id);
@@ -88,12 +87,11 @@ namespace AspNetCoreWebApi.Datos
                 }
             }
         }
-
         public async Task EliminarApartamento(TblApartamentosModelo parametros)
         {
             using (var sql = new SqlConnection(cn.CadenaSQL()))
             {
-                using (var cmd = new SqlCommand("EliminarApartamento", sql))
+                using (var cmd = new SqlCommand("stpr_EliminarApartamento", sql))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", parametros.Id);
