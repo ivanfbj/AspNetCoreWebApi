@@ -1,6 +1,7 @@
 ﻿using AspNetCoreWebApi.Modelo;
 using AspNetCoreWebApi.Datos;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace AspNetCoreWebApi.Controllers
 {
@@ -17,7 +18,7 @@ namespace AspNetCoreWebApi.Controllers
         }
 
         [HttpPost]
-        public async Task PostApartamento([FromBody] TblApartamentosModelo parametros)
+        public async Task PostApartamento([FromBody] JsonDocument parametros)
         {
             var function = new TblApartamentosDatos();
             await function.InsertarApartamentos(parametros);
