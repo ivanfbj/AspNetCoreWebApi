@@ -10,11 +10,12 @@ namespace AspNetCoreWebApi.Controllers
     public class TblApartamentosController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<List<TblApartamentosModelo>>> GetApartamentos()
+        public async Task<ActionResult<string>> GetApartamentos()
         {
             var function = new TblApartamentosDatos();
             var lista = await function.MostrarApartamentos();
-            return lista;
+            var json = JsonSerializer.Serialize(lista);
+            return json;
         }
 
         [HttpPost]

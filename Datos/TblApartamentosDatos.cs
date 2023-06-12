@@ -10,9 +10,9 @@ namespace AspNetCoreWebApi.Datos
     public class TblApartamentosDatos
     {
         ConexionBd cn = new ConexionBd();
-        public async Task <List<TblApartamentosModelo>> MostrarApartamentos()
+        public async Task <List<Dictionary<string, object>>> MostrarApartamentos()
         {
-            var lista = new List<TblApartamentosModelo>();
+            var lista = new List<Dictionary<string, object>>();
             using (var sql = new SqlConnection(cn.CadenaSQL()))
             {
                 using (var cmd = new SqlCommand("stpr_MostrarApartamentos", sql))
@@ -23,20 +23,20 @@ namespace AspNetCoreWebApi.Datos
                     {
                         while (await item.ReadAsync())
                         {
-                            var modeloApartamentos = new TblApartamentosModelo();
-                            modeloApartamentos.Id = (int)item["Id"];
-                            modeloApartamentos.Codigo = (string)item["Codigo"];
-                            modeloApartamentos.Urls = (string)item["Urls"];
-                            modeloApartamentos.Area = (string)item["Area"];
-                            modeloApartamentos.Habitaciones = (int)item["Habitaciones"];
-                            modeloApartamentos.Garaje = (int)item["Garaje"];
-                            modeloApartamentos.Ducha = (int)item["Ducha"];
-                            modeloApartamentos.Municipio = (string)item["Municipio"];
-                            modeloApartamentos.Barrio = (string)item["Barrio"];
-                            modeloApartamentos.Precio = (Int64)item["Precio"];
-                            modeloApartamentos.Agencia = (string)item["Agencia"];
+                            var apartamento = new Dictionary<string, object>();
+                            apartamento["Id"] = (int)item["Id"];
+                            apartamento["Codigo"] = (string)item["Codigo"];
+                            apartamento["Urls"] = (string)item["Urls"];
+                            apartamento["Area"] = (string)item["Area"];
+                            apartamento["Habitaciones"] = (int)item["Habitaciones"];
+                            apartamento["Garaje"] = (int)item["Garaje"];
+                            apartamento["Ducha"] = (int)item["Ducha"];
+                            apartamento["Municipio"] = (string)item["Municipio"];
+                            apartamento["Barrio"] = (string)item["Barrio"];
+                            apartamento["Precio"] = (Int64)item["Precio"];
+                            apartamento["Agencia"] = (string)item["Agencia"];
 
-                            lista.Add(modeloApartamentos);
+                            lista.Add(apartamento);
                         }
                     }
                 }
