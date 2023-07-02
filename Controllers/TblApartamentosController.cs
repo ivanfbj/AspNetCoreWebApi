@@ -2,6 +2,7 @@
 using AspNetCoreWebApi.Datos;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using System.Collections.Generic;
 
 namespace AspNetCoreWebApi.Controllers
 {
@@ -10,12 +11,11 @@ namespace AspNetCoreWebApi.Controllers
     public class TblApartamentosController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<string>> GetApartamentos()
+        public async Task<JsonResult> GetApartamentos()
         {
-            var function = new TblApartamentosDatos();
-            var lista = await function.MostrarApartamentos();
-            var json = JsonSerializer.Serialize(lista);
-            return json;
+            TblApartamentosDatos function = new();
+            List <Dictionary<string, object>> lista = await function.MostrarApartamentos();
+            return new JsonResult(lista);
         }
 
         [HttpPost]
